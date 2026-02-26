@@ -1,0 +1,26 @@
+<script>
+const dataPH = {{ data | tojson | safe }};
+
+if (dataPH.length > 0) {
+    new Chart(document.getElementById('chartPH'), {
+        type: 'bar',
+        data: {
+            labels: dataPH.map(d => d.rumah),
+            datasets: [{
+                label: 'pH',
+                data: dataPH.map(d => d.pH),
+                backgroundColor: '#4dabf7'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    min: 0,
+                    max: 14
+                }
+            }
+        }
+    });
+}
+</script>
